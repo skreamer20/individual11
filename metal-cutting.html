@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор ограждений</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: url('img/fonforraskmet.jpg') center/cover no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #1d1d1d;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.92);
+            /* полупрозрачный */
+            backdrop-filter: blur(3px);
+            border-radius: 16px;
+            padding: 60px 30px;
+            max-width: 1000px;
+            margin: 60px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #b21e1e;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .back-link:hover {
+            color: rgb(122, 5, 5)
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        .fancy-block {
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .about {
+            align-items: center;
+
+        }
+
+        .fancy-block h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #b21e1e;
+            background-color: #fff;
+        }
+
+        .fancy-block p {
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #fff;
+        }
+
+        .cta {
+            background: #b21e1e;
+            color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .cta h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .default-btn {
+            padding: 14px 28px;
+            font-size: 16px;
+            background: #fff;
+            color: #b21e1e;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .default-btn:hover {
+            background: #6a1414;
+            color: white;
+        }
+
+        .default-btn:active {
+            background: #ff0000;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .fancy-block {
+                padding: 20px;
+            }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal-window {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            animation: fadeIn 0.3s ease forwards;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-window h2 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .modal-window p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .modal-form input {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .success-window {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-window p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .success-window {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-window p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .calc-description {
+            max-width: 800px;
+            margin: 40px auto;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #2e2e2e;
+            background-color: rgba(255, 255, 255, 0.92);
+            padding: 30px 40px;
+            border-left: 6px solid #b21e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .calc-description:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <a href="index.html" class="back-link">← На главную</a>
+
+        <h1>Онлайн-калькулятор раскроя</h1>
+        <p class="intro">Экономьте время, исключайте ошибки, увеличивайте прибыль с нашей системой раскроя
+            металлопродукции!</p>
+        <p class="calc-description">
+            Наш калькулятор раскроя металлопродукции — это удобный онлайн-инструмент, который быстро и точно рассчитает
+            количество и стоимость металлопроката с учетом резки по индивидуальным размерам, а так же учтет подходящие
+            для дальнейшей реализации остатки.
+
+            Версия для менеджеров – профессиональный инструмент для автоматизации работы с клиентами, формирования
+            коммерческих предложений и карты раскроя.
+
+            Версия для клиентов (пользователей сайта) – простой и интуитивно понятный калькулятор для самостоятельного
+            расчета стоимости и оформления заявки.
+
+            Наш продукт позволяет значительно упростить процесс расчета, минимизировать отходы, повысить точность и
+            автоматизировать ключевые этапы работы с металлопрокатом.</p>
+
+        <div class="fancy-block">
+            <h2>Преимущества калькулятора</h2>
+            <p> ⚙️ Автоматизация и ускорение работы
+                Мгновенные расчеты стоимости, количества и веса металлопроката без ручного ввода данных.
+                Оперативное создание и отправка КП клиенту в удобном формате.
+                Исключение человеческого фактора и ошибок за счет алгоритмических вычислений.
+                Все данные сохраняются в системе, что облегчает повторные продажи и управление заказами.<br>
+                📊 Повышение точности и качества работы
+                Калькулятор учитывает все ограничения и правила, что предотвращает несоответствия.
+                Интуитивно понятный интерфейс, с 2 версиями как для менеджеров, так и для клиентов.
+                Автоматизация процессов снижает нагрузку на менеджеров и ускоряет оформление заказов.
+                Настройка параметров под индивидуальные требования компании для точного соответствия
+                бизнес-процессам.<br>
+                🖨️ Оптимизация расхода материала и сокращение затрат
+                Минимизация отходов и снижение затрат на закупку металлопроката.
+                Возможность устанавливать кратность резки, выбирать тип материала и учитывать сопутствующие элементы.
+                Карта раскроя помогает контролировать правильность раскроя и минимизировать ошибки.
+                Расчет выполняется в считанные секунды, без необходимости сложных вычислений.
+                Рост продаж и повышение доверия клиентов<br><br>
+            </p>
+        </div>
+
+        <div class="fancy-block">
+            <h2>Часто задаваемые вопросы:</h2>
+            <p> 📊 Может ли калькулятор быть доработан под наши и индивидуальные требования?<br>
+                Да, калькулятор может быть доработан в индивидуальном порядке.<br><br>
+                📊 Можно ли в одном расчете использовать несколько видов металлопродукции?<br>
+                Да, Вы можете добавлять в один расчет неограниченное количество видов металлопродукции.<br><br>
+                📊 Формируется ли карта раскроя?<br>
+                Да, карта раскроя формируется на основании результата расчета.<br><br>
+                📊 Можно ли учитывать скидки и специальные условия для клиентов?<br>
+                Да, конфигуратор поддерживает гибкую систему скидок.<br><br>
+                📊 Можно ли настроить каталог под конкретные типы металлопроката?<br>
+                Да, каталог можно адаптировать под ваш ассортимент, включая различные типы листового металла, профилей,
+                труб и других изделий.<br><br>
+                📊 Формирует ли калькулятор коммерческое предложение?<br>
+                Формирует.<br>
+            </p>
+        </div>
+
+        <div class="cta">
+            <h3>Хотите преобрести такой калькулятор?</h3>
+            <button class="default-btn">Оставить заявку</button>
+        </div>
+
+    </div>
+    <div class="modal-overlay" id="modal">
+        <div class="modal-window">
+            <h2>Оставьте свои контакты</h2>
+            <p>Мы свяжемся с вами в ближайшее время</p>
+            <form class="modal-form">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <button type="submit" class="default-btn">Отправить</button>
+            </form>
+            <span class="modal-close" id="closeModal">&times;</span>
+        </div>
+    </div>
+    <div class="success-overlay" id="successModal">
+        <div class="success-window">
+            <p>Форма успешно отправлена!</p>
+            <button id="successOkBtn" class="default-btn">Ок</button>
+        </div>
+    </div>
+    <script>
+        const modal = document.getElementById('modal');
+        const openBtn = document.querySelector('.default-btn');
+        const closeBtn = document.getElementById('closeModal');
+
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // если кнопка в ссылке
+            modal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        const form = document.querySelector('.modal-form');
+        const successModal = document.getElementById('successModal');
+        const successOkBtn = document.getElementById('successOkBtn');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Закрыть основную форму
+            modal.style.display = 'none';
+
+            // Показать сообщение об успехе
+            successModal.style.display = 'flex';
+
+            // Очистить поля формы
+            form.reset();
+        });
+
+        successOkBtn.addEventListener('click', function () {
+            successModal.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
