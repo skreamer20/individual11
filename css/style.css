@@ -951,9 +951,22 @@ a {
     }
 
     .product-grid,
-    .product-grid2,
-    .clients-grid {
+    .product-grid2 {
         grid-template-columns: 1fr;
+    }
+
+    .clients-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .client-card {
+        max-width: 260px;
+        width: 90%;
+        font-size: 14px;
+        padding: 16px;
     }
 
     .product-card,
