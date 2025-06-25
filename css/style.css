@@ -24,7 +24,6 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     color: var(--black-color);
-    background-color: white
 }
 
 img {
@@ -46,7 +45,7 @@ a {
     font-weight: 700;
     border-radius: 12px;
     height: 50px;
-    background-color: var(--base-color);
+    background-color: #540101;
     border: none;
     outline: 1px solid transparent;
     outline-offset: 2px;
@@ -67,15 +66,6 @@ a {
     background-color: var(--base-color-active);
 }
 
-.logo {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    box-sizing: border-box;
-    padding: 0px;
-}
-
-
 /* меню */
 .menu__list {
     display: flex;
@@ -87,25 +77,34 @@ a {
 }
 
 .menu__link {
-    color: white;
-    outline: none;
-    transition: outline-color var(--transition-duration), background-color var(--transition-duration);
-
+    position: relative;
+    display: inline-block;
+    color: var(--base-color);
+    font-weight: 600;
+    text-decoration: none;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
 }
 
-.menu__link:focus-visible {
-    outline-color: none;
-    color: var(--black-color);
+.menu__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
     background-color: var(--base-color);
-
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
 }
 
 .menu__link:hover {
-    color: var(--base-color);
+    color: #fffbfb;
 }
 
-.menu__link:active {
-    color: var(--base-color-active);
+.menu__link:hover::after {
+    transform: scaleX(1);
 }
 
 .header {
@@ -115,7 +114,7 @@ a {
 .header__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 10px 15px;
+    padding: 20px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -136,8 +135,18 @@ a {
 
 .header__logo img {
     width: 100%;
+    max-width: 190px;
     height: auto;
     display: block;
+}
+
+.logo {
+    width: 100%;
+    max-width: 190px;
+    height: auto;
+    display: block;
+    box-sizing: border-box;
+    padding: 0px;
 }
 
 .header__logo:focus-visible {
@@ -153,7 +162,8 @@ a {
 }
 
 .hero {
-    background-color: white;
+    background: linear-gradient(135deg, #b21e1e, #1d1d1d);
+    color: white;
 }
 
 .container {
@@ -164,7 +174,8 @@ a {
 }
 
 .hero__container {
-    background-color: white;
+
+    color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -912,9 +923,7 @@ a {
     }
 
     .line {
-        order: 1;
-        margin-top: 20px;
-        margin-bottom: 30px;
+        display: none;
     }
 
 
@@ -952,7 +961,9 @@ a {
 
     .product-grid,
     .product-grid2 {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .clients-grid {
@@ -963,7 +974,7 @@ a {
     }
 
     .client-card {
-        max-width: 260px;
+        max-width: 280px;
         width: 90%;
         font-size: 14px;
         padding: 16px;
@@ -971,7 +982,8 @@ a {
 
     .product-card,
     .product-item {
-        height: auto;
+        width: 90%;
+        max-width: 300px;
     }
 
     .overlay {
@@ -996,16 +1008,17 @@ a {
     }
 
     .clients-wrapper {
-        padding: 30px 20px;
+        padding: 60px 20px;
     }
 
     .footer {
-        padding: 40px 20px 20px;
+        padding: 60px 20px 20px;
     }
 
     .footer-container {
         flex-direction: column;
         gap: 30px;
+        text-align: center;
     }
 
     .modal-window {
