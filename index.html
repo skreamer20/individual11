@@ -22,6 +22,11 @@
             <a href="" class="header__logo">
                 <img class="logo" src="./img/vistegra_logo.svg" alt="VISTEGRA">
             </a>
+            <div class="burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <nav class="menu header__menu">
                 <ul class="menu__list header__menu-list">
                     <li class="menu__item">
@@ -95,7 +100,7 @@
             <div class="container">
                 <h2 class="section-title"><span>Продукты</span> компании</h2>
                 <div class="product-grid">
-                    <div class="product-card" style="background-image: url('./img/fence.jpg')">
+                    <div class="product-card" style="background-image: url('./img/fence1.jpg')">
                         <div class="overlay">
                             <h3>Калькулятор ограждений</h3>
                             <p>Наш калькулятор ограждений поможет вам быстро рассчитать количество материалов и
@@ -104,7 +109,7 @@
                             <a href="fence-calculator.html" class="btn-white">Подробнее</a>
                         </div>
                     </div>
-                    <div class="product-card" style="background-image: url('./img/metal-cut.jpg')">
+                    <div class="product-card" style="background-image: url('./img/metal-cut3.jpg')">
                         <div class="overlay">
                             <h3>Система раскроя металлопродукции</h3>
                             <p>Система раскроя металлопродукции
@@ -114,7 +119,7 @@
                             <a href="metal-cutting.html" class="btn-white">Подробнее</a>
                         </div>
                     </div>
-                    <div class="product-card" style="background-image: url('./img/metal-calc.jpg')">
+                    <div class="product-card" style="background-image: url('./img/metal-calc2.jpg')">
                         <div class="overlay">
                             <h3>Конструктор душевых</h3>
                             <p>Наш конструктор душевых перегородок рассчитает стоимость и сконфигурирует по выбранным
@@ -341,6 +346,21 @@
 
         successOkBtn.addEventListener('click', function () {
             successModal.style.display = 'none';
+        });
+
+        const burger = document.getElementById('burger');
+        const menu = document.querySelector('.header__menu');
+
+        burger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            burger.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.menu__link').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+                burger.classList.remove('open');
+            });
         });
     </script>
 </body>
