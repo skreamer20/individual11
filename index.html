@@ -352,21 +352,26 @@
 
         const burger = document.getElementById('burger');
         const menu = document.getElementById('mobileMenu');
-
-        burger.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
-
         const overlay = document.getElementById('menuOverlay');
 
         burger.addEventListener('click', () => {
+            burger.classList.toggle('open');
             menu.classList.toggle('active');
             overlay.classList.toggle('active');
         });
 
         overlay.addEventListener('click', () => {
+            burger.classList.remove('open');
             menu.classList.remove('active');
             overlay.classList.remove('active');
+        });
+
+        document.querySelectorAll('.menu__link').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('open');
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+            });
         });
 
     </script>
