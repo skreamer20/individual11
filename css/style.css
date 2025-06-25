@@ -890,7 +890,6 @@ a {
     }
 }
 
-/* Бургер скрыт на десктопе */
 .burger {
     display: none;
     flex-direction: column;
@@ -909,10 +908,52 @@ a {
     transition: 0.3s ease;
 }
 
-/* Стили меню */
+/* Основное меню */
 .header__menu-list {
     display: flex;
     gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .burger {
+        display: flex;
+    }
+
+    .header__menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .header__menu.active {
+        display: flex;
+    }
+
+    .header__menu-list {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .menu__link {
+        font-size: 18px;
+        font-weight: bold;
+        color: #1d1d1d;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .menu__link:hover {
+        color: #b21e1e;
+    }
 }
 
 @media (max-width: 768px) {
