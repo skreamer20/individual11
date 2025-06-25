@@ -960,6 +960,11 @@ a {
 
     .burger {
         display: flex;
+        margin-top: -20px;
+    }
+
+    .header__container {
+        padding-top: 20px;
     }
 
     .header__menu {
