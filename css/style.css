@@ -890,28 +890,69 @@ a {
     }
 }
 
+/* Бургер и стили */
 .burger {
     display: none;
     flex-direction: column;
-    justify-content: space-between;
-    width: 25px;
-    height: 18px;
+    gap: 5px;
     cursor: pointer;
     z-index: 1001;
 }
 
 .burger span {
     display: block;
+    width: 25px;
     height: 3px;
     background: #1d1d1d;
     border-radius: 2px;
     transition: 0.3s ease;
 }
 
-/* Основное меню */
-.header__menu-list {
+/* Скрытое меню */
+.header__menu {
     display: flex;
     gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .burger {
+        display: flex;
+    }
+
+    .header__menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .header__menu.active {
+        display: flex;
+    }
+
+    .header__menu-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .menu__link {
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        color: #1d1d1d;
+    }
+
+    .menu__link:hover {
+        color: #b21e1e;
+    }
 }
 
 @media (max-width: 768px) {

@@ -22,25 +22,12 @@
             <a href="" class="header__logo">
                 <img class="logo" src="./img/vistegra_logo.svg" alt="VISTEGRA">
             </a>
+            <!-- Бургер -->
             <div class="burger" id="burger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-
-            <nav class="menu header__menu">
-                <ul class="menu__list header__menu-list">
-                    <li class="menu__item">
-                        <a href="#services" class="menu__link">Услуги</a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#products" class="menu__link">Продукты</a>
-                    </li>
-                    <li class="menu__item">
-                        <a href="#clientss" class="menu__link">Клиенты</a>
-                    </li>
-                </ul>
-            </nav>
             <nav class="menu header__menu">
                 <ul class="menu__list header__menu-list">
                     <li class="menu__item">
@@ -363,19 +350,19 @@
         });
 
         const burger = document.getElementById('burger');
-        const menu = document.querySelector('.header__menu');
+        const menu = document.getElementById('mobileMenu');
 
         burger.addEventListener('click', () => {
             menu.classList.toggle('active');
-            burger.classList.toggle('open');
         });
 
+        // Закрытие по ссылке
         document.querySelectorAll('.menu__link').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.remove('active');
-                burger.classList.remove('open');
             });
         });
+
     </script>
 </body>
 
