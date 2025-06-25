@@ -28,7 +28,7 @@
                 <span></span>
                 <span></span>
             </div>
-            <nav class="menu header__menu">
+            <nav class="menu header__menu" id="mobileMenu">
                 <ul class="menu__list header__menu-list">
                     <li class="menu__item">
                         <a href="#services" class="menu__link">Услуги</a>
@@ -41,6 +41,7 @@
                     </li>
                 </ul>
             </nav>
+            <div class="menu-overlay" id="menuOverlay"></div>
         </div>
     </header>
 
@@ -356,11 +357,16 @@
             menu.classList.toggle('active');
         });
 
-        // Закрытие по ссылке
-        document.querySelectorAll('.menu__link').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.remove('active');
-            });
+        const overlay = document.getElementById('menuOverlay');
+
+        burger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            menu.classList.remove('active');
+            overlay.classList.remove('active');
         });
 
     </script>
